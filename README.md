@@ -59,7 +59,7 @@
 |-----------------------------------------------------|
 | item_name | string | null: false, foreign_key: true |
 
-### 外部キー: items, :user
+### 外部キー: items, :users
 
 
 ### Association
