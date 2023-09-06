@@ -59,9 +59,9 @@
 |-----------------------------------------------------|
 | item_name | string | null: false, foreign_key: true |
 
-### 外部キー: items, :users
+### 外部キー: items, :userss
 
 
 ### Association
 - belongs_to :users
-- has_many :items, :shipping_information
+- has_many :items, :shipping_information 
