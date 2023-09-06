@@ -64,4 +64,4 @@
 
 ### Association
 - belongs_to :users
-- has_many :items, :shipping_information 
+- has_many :items, :shipping_information
