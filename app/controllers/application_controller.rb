@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
       added_attrs = [ :nickname, :email, :password, :birthday ]
-      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
     end
   end
 
