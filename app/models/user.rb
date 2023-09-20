@@ -7,6 +7,8 @@ class User < ApplicationRecord
   
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
+
+
        
   
   validates :nickname, presence: true
@@ -16,4 +18,5 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'is invalid.Input full-width characters'}
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'is invalid.Input full-width characters'}
   validates :birthday, presence: { message: "date can't be blank" }
+
 end
