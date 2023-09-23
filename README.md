@@ -27,7 +27,7 @@
 |   condition_id    |   integer   |           null: false          |
 | shipping_charge_id |   integer   |           null: false          |
 | prefecture_id     |   integer   |           null: false          |
-| shipping_time_id  |   integer   |           null: false          |
+| delivery_date_id  |   integer   |           null: false          |
 
 ### Association
 - belongs_to :user
