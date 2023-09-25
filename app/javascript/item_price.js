@@ -1,39 +1,18 @@
+function item_price() {
 const priceInput = document.getElementById("item-price");
+const addTaxDom = document.getElementById("add-tax-price");
+const addProfitDom = document.getElementById("profit");
+const tax = 0.1;
 
-function calculateSalesFeeAndProfit(price) {
-  // 販売手数料の計算（例: 10%とする）
-  const salesFeePercentage = 0.1; // 10%の場合
-  const salesFee = price * salesFeePercentage;
-
-  // 利益の計算
-  const profit = price - salesFee;
-
-  return { salesFee, profit };
+priceInput.addEventListener("input", () => {
+  const inputValue = priceInput.value;
+  const taxAmount = Math.floor(inputValue * tax);
+  addTaxDom.innerHTML = `${taxAmount}`;
+  const profitAmount = Math.floor(inputValue - taxAmount);
+  addProfitDom.innerHTML = `${profitAmount}`;
+});
 }
 
-// 金額が変更されたときに計算と表示を更新
-priceInput.addEventListener("input", () => {
-  const price = parseFloat(priceInput.value);
-  if (!isNaN(price)) {
-    const { salesFee, profit } = calculateSalesFeeAndProfit(price);
-    
-    // 結果をHTMLに表示
-    const salesFeeElement = document.getElementById("add-tax-price");
-    salesFeeElement.innerHTML = `${Math.floor(salesFee)}`;
-
-    const profitElement = document.getElementById("profit");
-    profitElement.innerHTML = `${Math.floor(profit)}`;
-  } else {
-    // 金額が無効な場合、表示をクリア
-    const salesFeeElement = document.getElementById("add-tax-price");
-    salesFeeElement.innerHTML = "";
-
-    const profitElement = document.getElementById("profit");
-    profitElement.innerHTML = "";
-  }
+window.addEventListener('turbo:load', () => {
+  item_price();
 });
-
-
-
-
-
