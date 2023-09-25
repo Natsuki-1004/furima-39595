@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belong_to :User
+  belongs_to :User
   has_one_attached :image
   
   validates :item_name, presence: true
