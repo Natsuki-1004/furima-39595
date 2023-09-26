@@ -33,13 +33,23 @@ class ItemsController < ApplicationController
 
     def edit
       @item = Item.find(params[:id])
-      unless user_signed_in? && current_user == @item.user
+      
+      if user_signed_in? && current_user == @item.user && !@item.sold_out?
+        render :edit
+      elsif !user_signed_in?
+        redirect_to new_user_session_path
+      else
         redirect_to action: :index
       end
     end
+    
         
   private
   def item_params
     params.require(:item).permit(:image, :item_name, :description, :category_id, :condition_id, :shipping_charge_id, :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
   end  
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end  
