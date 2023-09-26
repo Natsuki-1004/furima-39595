@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
   before_action :set_item, only: [:show, :edit, :update]
     
     def index
@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
         end
     
     def show
-      @item = Item.find(params[:id])
     end
 
     def update
@@ -32,15 +31,7 @@ class ItemsController < ApplicationController
     end
 
     def edit
-      @item = Item.find(params[:id])
-      
-      if user_signed_in? && current_user == @item.user && !@item.sold_out?
-        render :edit
-      elsif !user_signed_in?
-        redirect_to new_user_session_path
-      else
-        redirect_to action: :index
-      end
+      render :edit
     end
     
         
