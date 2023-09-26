@@ -31,15 +31,14 @@ class ItemsController < ApplicationController
     end
 
     def edit
-
-      if user_signed_in? && current_user == @item.user
+      authenticate_user! 
+      if current_user == @item.user
         render :edit
-      elsif !user_signed_in?
-        redirect_to new_user_session_path
       else
         redirect_to action: :index
       end
     end
+    
     
         
   private
