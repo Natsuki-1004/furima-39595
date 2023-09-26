@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
   before_action :set_item, only: [:show, :edit, :update]
     
     def index
@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
     end
 
     def edit
-      authenticate_user! 
       if current_user == @item.user
         render :edit
       else
