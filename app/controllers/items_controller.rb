@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
 
   def check_user_ownership
     unless current_user == @item.user
-      redirect_to action: :index
+      
     end
   end
 end
